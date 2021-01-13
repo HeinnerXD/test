@@ -1,0 +1,50 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Table xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:me="sap.me"
+	xmlns:ui="sap.ca.ui" xmlns:layout="sap.ui.layout" id="lineItemListCoreq"
+	inset="false">
+	<columns>
+		<Column width="4em">
+
+		</Column>
+		<Column hAlign="Left">
+			<header>
+				<Label text="{i18n>PROF}" />
+			</header>
+		</Column>
+		<Column hAlign="Right">
+			<header>
+				<Label text="{i18n>SCHEDULE}" />
+			</header>
+		</Column>
+	</columns>
+
+	<ColumnListItem  press="handleLineItemPress">
+		<cells>
+		<RadioButton groupName="{parts : [{path : 'CoreqEvents>CategoryText'},{path : 'CoreqEvents>CourseId'}],formatter:'publicservices.her.mycourses.s1.utils.Formatter.getGroupName'}" 
+				select="onRadioBtnClickCoreq" selected="{path:'CoreqEvents>RegisterIndicator', formatter: 'publicservices.her.mycourses.s1.utils.Formatter.setEventSel'}">
+<customData>
+								<core:CustomData key="EventType" value="{CoreqEvents>CourseId}"></core:CustomData>
+							</customData></RadioButton>
+			<layout:VerticalLayout>
+			   <Image src="{CoreqEvents>PhotoURI}" width="4em" />
+				<CustomListItem type="Inactive">
+					<Link  enabled="true" visible="true" href="" text="{CoreqEvents>InstrText}" wrapping="true"
+					press="fnOpenPopupCoreq"></Link>
+				</CustomListItem>	
+				<Label  />
+				<Label text="{i18n>PLACE}" />			
+				<Text wrapping="true" text="{parts : [{path : 'CoreqEvents>BuildingText'},{path : 'CoreqEvents>LocationText'}, {path : 'CoreqEvents>RoomText'}], formatter : 'publicservices.her.mycourses.s1.utils.Formatter.getCourseLocationInfo'}"/>
+				<Label  />				
+				<Label text="{i18n>TIME}" />
+				<Text wrapping="true"  text="{CoreqEvents>ScheduleText}" />
+				
+			</layout:VerticalLayout>
+			<ObjectNumber wrapping="true" number="{path :'CoreqEvents>Availability',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.getEventState'}" state="Success" />
+
+		</cells>
+	</ColumnListItem>
+</Table>

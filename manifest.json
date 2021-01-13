@@ -1,0 +1,87 @@
+{
+    "_version": "1.2.0",
+    "sap.app": {
+        "_version": "1.2.0",
+        "id": "publicservices.her.mycourses.s1",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "4.0.5"
+        },
+        "title": "{{DETAIL_TITLE}}",
+        "ach": "IS-HER-FIO",
+        "dataSources": {
+            "Master_course": {
+                "uri": "/sap/opu/odata/sap/PIQ_COURSE_REG_DETAILS_SRV/",
+                "settings": {
+                    "localUri": "model/metadata.xml"
+                }
+            }
+        },
+        "resources": "resources.json",
+        "crossNavigation": {
+		     "inbounds": {
+		         "MyCourses":
+		             {
+		                 "semanticObject": "AcademicCourse",
+		                 "action": "register",
+		                 "signature": {
+		                 	 "parameters": {
+		                 	 },
+		                     "additionalParameters": "allowed"
+		                 }
+		             }
+		     }
+    	}
+    },
+    "sap.ui": {
+        "_version": "1.2.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "config": {
+            "sapFiori2Adaptation": true
+		},
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.40.13",
+            "libs": {
+                "sap.m": {},
+                "sap.me": {},
+                "sap.ui.layout": {},
+                "sap.ca.scfld.md": {},
+                "sap.ca.ui": {},
+                "sap.ushell":{}
+            },
+            "components": {}
+        },
+        "contentDensities": {
+        	"compact": true,
+			"cozy": true
+        }
+    },
+    "sap.platform.abap": {
+        "_version": "1.1.0",
+        "uri": "/sap/bc/ui5_ui5/sap/her_mycoursess1"
+    },
+    "sap.fiori": {
+        "_version": "1.1.0",
+        "registrationIds": [
+            "F0776"
+        ],
+        "archeType": "transactional"
+    }
+}

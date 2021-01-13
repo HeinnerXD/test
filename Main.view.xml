@@ -1,0 +1,10 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	controllerName="publicservices.her.mycourses.s1.Main" displayBlock="true" height="100%">
+	<NavContainer id="fioriContent" showHeader="false">
+	</NavContainer>
+</core:View>

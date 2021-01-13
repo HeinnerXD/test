@@ -1,0 +1,32 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" resourceBundleName="publicservices.her.mycourses.s1.i18n.i18n"
+	resourceBundleAlias="i18n">
+	<ViewSettingsDialog confirm="handleConfirm" cancel="handleCancel"
+		resetFilters="handleResetFilters">
+		<filterItems>
+			<ViewSettingsFilterItem text="{i18n>GRP_STATE}"
+				key="1" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{i18n>OPEN_FOR_FILTER}" key="KEY_ALL"/>
+					<ViewSettingsItem text="{i18n>STUDY_PLAN}" key="STUDY_PLAN" />
+					<ViewSettingsItem text="{i18n>REGISTERED}" key="KEY_REGISTERED" />
+					<ViewSettingsItem text="{i18n>WAITING_LIST}" key="WAITING_LIST" />
+					<ViewSettingsItem text="{i18n>WISH_LIST}" key="WISH_LIST" />
+					<ViewSettingsItem text="{i18n>ADVISOR_LIST}" key="ADVISOR_LIST" />
+					<ViewSettingsItem text="{i18n>SPECIALIZATION}" key="KEY_SPEC" />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem id="filterItemsId" text="{i18n>FIL_ACADYRSESS}"
+				key="2" multiSelect="false" items="{path:'/AcademicStructureSet'}">
+				<items>
+				    <ViewSettingsItem text="{parts : [{path : 'AcademicYearText'},{path : 'AcademicSessText'}],formatter:'publicservices.her.mycourses.s1.utils.Formatter.getFilterItem'}" />				
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

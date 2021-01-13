@@ -1,0 +1,26 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View controllerName="publicservices.her.mycourses.s1.template.Employee"
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml"
+	resourceBundleName="publicservices.her.mycourses.s1.i18n.i18n"
+	resourceBundleAlias="i18n">
+	<form:SimpleForm maxContainerCols="2">
+		<core:Title text="{i18n>CONTACT_DETAILS}" />
+		<Label text="{i18n>MOBILE}" />
+		<Link text="{MobileNum}" press="handleTelPress" />
+		<Label text="{i18n>PHONE}" />
+		<Link text="{WorkNum}" press="handleTelPress" />
+		<Label text="{i18n>EMAIL}" />
+		<Link text="{EmailId}" press="handleEmailPress" />
+	</form:SimpleForm>
+	<form:SimpleForm maxContainerCols="2">
+		<core:Title text="{i18n>UNIVERSITY}" />
+		<Label text="{i18n>NAME}" />
+		<Text text="{OrgUnit}" />
+	</form:SimpleForm>
+
+</core:View>

@@ -1,0 +1,79 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<Table xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:me="sap.me"
+	xmlns:ui="sap.ca.ui" xmlns:layout="sap.ui.layout" id="lineItemList" inset="false"
+	items="{path: 'PrimEvents>/EventDetails',sorter: {path: 'PrimEvents>CategoryText',descending: false,group: true}}" >
+	
+	<!-- <headerToolbar> <Toolbar> <Label text="{CategoryText}" /> </Toolbar> 
+		</headerToolbar> -->
+	<columns>
+		<Column width="3em">
+			<header>
+				<Label />
+			</header>
+		</Column>
+		<Column width="17em">
+			<header>
+				<Label text="{i18n>PROF}" />
+			</header>
+		</Column>
+
+		<Column hAlign="Left" demandPopin="true">
+			<header>
+				<Label text="{i18n>PLACE}" />
+			</header>
+		</Column>
+		<Column hAlign="Left" demandPopin="true">
+			<header>
+				<Label text="{i18n>SCHEDULE}" />
+			</header>
+		</Column>
+		<Column hAlign="Right">
+			<header>
+				<Label text="{i18n>AVAILABILITY}" />
+			</header>
+		</Column>
+	</columns>
+
+	<ColumnListItem >
+                                                              
+		<cells>
+			<RadioButton groupName="{parts : [{path : 'PrimEvents>CategoryText'},{path : 'PrimEvents>CourseId'}],formatter:'publicservices.her.mycourses.s1.utils.Formatter.getGroupName'}" 
+				select="onRadioBtnClick" selected="{path:'PrimEvents>RegisterIndicator',formatter: 'publicservices.her.mycourses.s1.utils.Formatter.setEventSel'}"/>
+      <!-- selected="{PrimEvents>RegisterIndicator} -->
+			<layout:HorizontalLayout>
+				<Image
+					src="{PrimEvents>PhotoURI}"
+					width="4em" />
+				<layout:VerticalLayout>
+				    <Label />
+				    </layout:VerticalLayout>
+				<FlexBox width="auto" renderType="List" justifyContent="Start"
+					alignItems="Start">
+					<items>
+						<VBox wrapping="true" class="marginVerticalContent" >
+							<Link wrapping="true"  text="{PrimEvents>InstrText}" press="fnOpenPopupEventContact" visible="{path : 'PrimEvents>InstrText',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.visible'}"/>
+						</VBox>
+					</items>
+				</FlexBox>
+			</layout:HorizontalLayout>
+			<layout:VerticalLayout>
+				<Text  text="{PrimEvents>BuildingText}"></Text>
+				<Text  text="{PrimEvents>LocationText}"></Text>
+				<Text  text="{PrimEvents>RoomText}" />
+			</layout:VerticalLayout>
+			<layout:VerticalLayout>
+				<Label />
+				<Text wrapping="true"  text="{PrimEvents>ScheduleText}" />
+			</layout:VerticalLayout>
+			<layout:VerticalLayout>
+				<Label />
+				<ObjectNumber wrapping="true" number="{path :'PrimEvents>Availability',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.getEventState'}"  state="Success" />
+			</layout:VerticalLayout>
+
+		</cells>
+	</ColumnListItem>
+</Table>

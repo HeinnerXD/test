@@ -1,0 +1,41 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="{i18n>WITHDRAW}" id="withdrawId" contentHeight="150px">
+		<content>
+			<Label width="5%" />
+			<Text text="{i18n>MSG_REASON}" textAlign="Center" width="100%" />
+			<Label width="5%" />
+			<FlexBox alignItems="Start" width="100%">
+				<items>
+					<Label width="5%">
+						<layoutData>
+							<FlexItemData growFactor="1" />
+						</layoutData>
+					</Label>
+					<Select items="{path:'/CancelReasonSet'}" id="select" width="95%">
+						<core:Item key="{CancelReasonCode}" text="{CancelReasonTxt}" />
+						<layoutData>
+							<FlexItemData growFactor="20" />
+						</layoutData>
+					</Select>
+
+				</items>
+			</FlexBox>
+		</content>
+
+		<beginButton>
+			<Button width="50%" text="{i18n>MSG_OK}" app:dialogType="Withdraw"
+				app:Key="btn_ok" press="onDialogCloseButton" />
+		</beginButton>
+		<endButton>
+			<Button width="50%" text="{i18n>MSG_CANCEL}" app:dialogType="Withdraw"
+				app:Key="btn_can" press="onDialogCloseButton" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

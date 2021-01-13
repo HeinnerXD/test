@@ -1,0 +1,24 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ca.ui"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<ResponsivePopover
+    title="{i18n>MODULES_OFFERED}"
+    class="sapUiPopupWithPadding"
+    placement="Right" >
+    <beginButton>
+      <Button text="{i18n>MSG_OK}" width="100%" press="handleCloseButton" />
+    </beginButton>
+    <content>
+     	 <List  showSeparators="None" noDataText="{i18n>NO_DATA}" items="{path:'mod>/ModuleOffr'}">
+		     <StandardListItem title="{mod>modOffrd}" wrapping="true"></StandardListItem>
+		         
+		</List>
+	</content>
+  </ResponsivePopover>
+</core:FragmentDefinition>

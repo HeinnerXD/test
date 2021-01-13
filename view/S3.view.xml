@@ -1,0 +1,137 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
+	xmlns:ui="sap.ca.ui" xmlns="sap.m" controllerName="publicservices.her.mycourses.s1.view.S3">
+	<Page class="sapUiFioriObjectPage">
+		<content>
+			<ObjectHeader title="{CourseName}"
+				number="{path :'Credits',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.getCredits'}"
+				numberUnit="{CreditUnit}">
+				<!-- <statuses>
+					<ObjectStatus id="objstat" text="" state="Success"></ObjectStatus>
+				</statuses> -->
+				<attributes>
+					<ObjectAttribute id="ATTR1" text="" />
+				</attributes>
+			</ObjectHeader>
+
+			<IconTabBar id="iconTabBar" select="onTabSelect">
+				<items>
+					<IconTabFilter key="info" id="tabInfo" icon="sap-icon://hint"
+						text="{i18n>INFO}">
+						<content>
+							<layout:VerticalLayout id="ActInfoMainLayout"
+								width="99%">
+								<layout:form.SimpleForm id="form_f1"
+									minWidth="1024" maxContainerCols="2">
+									<Label class="PaddingRight" text="{i18n>COURSE_ID}" />
+									<Text text="{CourseNum}" />
+									<Label class="PaddingRight " text="{i18n>COMP_MODULE}"
+										visible="{path :'ModulesComposite',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}" />
+									<Text text="{path : 'ModulesComposite',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.compModuleFormatting'}"
+										visible="{path :'ModulesComposite',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}" />
+																	
+									<Label class="PaddingRight" text="{i18n>COURSE_GROUP_LBL}" />
+									<Text text="{ModuleGroup}" />
+									<Label class="PaddingRight " text="{i18n>ELIGIBILITY}" />
+									<HBox width="100%">
+										<Text id="txtElig" text="" />
+										<Text width="2px" />
+										<Link  press="pressCOREQ" id="CoreqLink" text="{i18n>COREQ}"
+											wrapping="true" />
+									</HBox>
+									<Label id="eligibilityLinkLblId" />
+									<HBox id="eligibilityHboxId" class="marginVerticalContent"
+										width="100%">
+										<Link id="eligibilityLinkId" width="auto" press="pressChkElig" />
+									</HBox>
+									<Label class="PaddingRight " text="{i18n>PGM_OF_STUDY}" visible="{path :'ProgOfStudytext',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}"/>
+									<Text text="{ProgOfStudytext}" visible="{path :'ProgOfStudytext',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}" />
+									<Label class="PaddingRight " text="{i18n>PGM_TYPE}" visible="{path :'ProgTypetext',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}"/>
+									<Text text="{ProgTypetext}" visible="{path :'ProgTypetext',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}"/>
+									<Label id="lblOffDept" class="PaddingRight" text="{i18n>OFFR_DEPT}" />
+									<Text id="txtOffDept" text="{OfferingDepartment}" />	
+									<Label id="eligibilityLinkLblId2" />
+									<Label class="PaddingRight " text="{i18n>ACD_YR}" />
+									<Text text="{path : 'Acad_Year'}" />
+									<Label class="PaddingRight " text="{i18n>ACD_SESSN}" />
+									<Text text="{path : 'Acad_Sess'}" />
+									
+									<Label class="PaddingRight " text="{i18n>MODULES_OFFERED}" visible="{path :'ModuleOffered',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}"/>
+									<Text visible="{path :'ModuleOffered',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.Visibility'}" text="{path : 'ModuleOffered',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.modOfferdFormatting'}"  />
+									<Label id="seeAll" class="PaddingRight " width="auto" visible="false" labelFor="seeAllLink"></Label>
+									<Link class="marginVerticalContent" width="4em" id="seeAllLink" text="{path : 'ModuleOffered',formatter : 'publicservices.her.mycourses.s1.utils.Formatter.seeAll'}" wrapping="true"  press="seeAllPress" visible="false"></Link>
+									<!-- Extension point to hide/show form elements -->
+									<core:ExtensionPoint name="extInfoTabContent"></core:ExtensionPoint>
+								</layout:form.SimpleForm>
+							</layout:VerticalLayout>
+
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://add-coursebook"
+						iconColor="Critical" key="Coreq" id="coreqId" text="{i18n>COREQ}"
+						visible="false">
+						<content>
+						 	    <layout:VerticalLayout id="vLayoutCoreq"
+								content="{CourseNos>/Events}">
+								<Panel id="panEvents" headerText="{CourseNos>CourseName}"
+									visible="{path : 'CourseNos>CourseId', formatter : 'publicservices.her.mycourses.s1.utils.Formatter.bindTables'}">
+									<customData>
+										<core:CustomData key="CourseId" value="{CourseNos>CourseId}"></core:CustomData>
+									</customData>
+									<content>
+
+									</content>
+								</Panel>
+							</layout:VerticalLayout>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://notes" text="{i18n>DESCRIPTION}"
+						id="tabDetails" key="detailsTab">
+						<content>
+							<layout:VerticalLayout width="99%">
+								<layout:form.SimpleForm minWidth="1024"
+									maxContainerCols="2">
+									<Text maxLines="10" class="sapMSampleTextMaxLinesText"
+										text="{path : 'Description', formatter : 'publicservices.her.mycourses.s1.utils.Formatter.getNoDataText'}"
+										width="auto" />
+								</layout:form.SimpleForm>
+							</layout:VerticalLayout>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://group" key="Contacts"
+						id="tabContact" text="{i18n>CONTACTS}">
+						<content>
+							<layout:HorizontalLayout>
+								<layout:VerticalLayout>
+									<Label />
+									<Image src="{PhotoURI}" width="4em" />
+								</layout:VerticalLayout>
+								<layout:VerticalLayout>
+									<Label />
+								</layout:VerticalLayout>
+								<FlexBox width="auto" renderType="List" justifyContent="Start"
+									alignItems="Start">
+									<items>
+										<Text id="contactLbl" />
+										<VBox wrapping="true" class="marginVerticalContent">
+											<Link wrapping="true" text="{Name}" press="fnOpenPopup" />
+											<Text text="{Position}"></Text>
+											<Text text="{Department}" />
+										</VBox>
+									</items>
+								</FlexBox>
+							</layout:HorizontalLayout>
+						</content>
+					</IconTabFilter>
+					<!-- Extension point to hide/show/add tabs -->
+					<core:ExtensionPoint name="extTabFilter"></core:ExtensionPoint>
+				</items>
+
+			</IconTabBar>
+		</content>
+	</Page>
+</core:View>

@@ -1,0 +1,43 @@
+<!--
+
+    Copyright (C) 2009-2016 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition
+	xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ca.ui"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<ResponsivePopover
+    title="{i18n>YOUR_ELIG}"
+    class="sapUiPopupWithPadding"
+    placement="Right" id="sEligId">
+    <content>
+      <form:SimpleForm id="eligibility_quickoverview"
+		maxContainerCols="2">
+		<ObjectStatus text ="{path:'EligibilityIndicator',formatter:'publicservices.her.mycourses.s1.utils.Formatter.getEligibilityText'}" state = "Success"/>
+		<core:Title text="{i18n>PRE_COND}" level = "H3" emphasized = "true"/>
+		<Label text="{i18n>PRE_REQ}" />
+		<List id="Prereq" showSeparators="None" noDataText="{i18n>NO_DATA}" items="{EligibilityDetails}">
+		          <CustomListItem>
+		      	<!-- <core:Icon src="sap-icon://accept" color="green" class="PaddingRight"/> -->
+		      	<core:Icon src="{path:'PRStatus',formatter:'publicservices.her.mycourses.s1.utils.Formatter.getIcon'}" color="{path:'PRStatus',formatter:'publicservices.her.mycourses.s1.utils.Formatter.getIconColour'}" class="PaddingRight"/>
+		      	<Text width="0.5em" />
+		        <Text text="{path : 'Sclas',formatter :'publicservices.her.mycourses.s1.utils.Formatter.getEligPre'}" />
+		      </CustomListItem>
+		</List>
+		
+		<Label text="{i18n>OTHERS}" />
+		<List id="Other" showSeparators="None" noDataText="{i18n>NO_DATA}" items="{EligibilityDetails}">
+		      <CustomListItem>
+		      	<core:Icon src="sap-icon://accept" color="green"/>
+		      	<Text width="0.5em" />
+		         <Text text="{path : 'Sclas',formatter :'publicservices.her.mycourses.s1.utils.Formatter.getEligOthers'}" />
+		      </CustomListItem>
+		</List>
+		<core:Title text="{i18n>CONTACT_DETAILS}" level = "H3" emphasized = "true"/>
+		<Text text="{path : 'SinglePointContact' ,formatter :'publicservices.her.mycourses.s1.utils.Formatter.getContactDetails'}"></Text>
+		
+	</form:SimpleForm>
+    </content>
+  </ResponsivePopover>
+</core:FragmentDefinition>
